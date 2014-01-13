@@ -29,7 +29,7 @@ public final class R {
         public static final int btn10=0x7f080002;
         public static final int btn15=0x7f080001;
         public static final int btn20=0x7f080003;
-        public static final int etTipAmount=0x7f080006;
+        public static final int etTotalAmount=0x7f080006;
         public static final int tvTipAmount=0x7f080004;
         public static final int tvTipLabel=0x7f080005;
     }
@@ -41,12 +41,14 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
+        public static final int amount_empty=0x7f050007;
+        public static final int amount_invalid=0x7f050009;
+        public static final int amount_zero=0x7f050008;
         public static final int app_name=0x7f050000;
         public static final int fifteen_percent=0x7f050004;
         public static final int hello_world=0x7f050002;
         public static final int ten_percent=0x7f050003;
         public static final int tip_lbl=0x7f050006;
-        public static final int total_amt=0x7f050007;
         public static final int twenty_percent=0x7f050005;
     }
     public static final class style {

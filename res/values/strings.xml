@@ -8,6 +8,8 @@
     <string name="fifteen_percent">15%</string>
     <string name="twenty_percent">20%</string>
     <string name="tip_lbl">Tip is:</string>
-    <string name="total_amt"></string>
+    <string name="amount_empty">Enter some amount</string>
+    <string name="amount_zero">Enter an amount greater than 0.0</string>
+    <string name="amount_invalid">Enter a valid amount</string>
 
 </resources>

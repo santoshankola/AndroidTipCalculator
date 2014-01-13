@@ -19,7 +19,8 @@
         android:layout_alignBaseline="@+id/btn10"
         android:layout_alignBottom="@+id/btn10"
         android:layout_centerHorizontal="true"
-        android:onClick="onBtn15Click"
+        android:onClick="onBtnClick"
+        android:tag="15"
         android:text="@string/fifteen_percent" />
 
     <Button
@@ -31,7 +32,8 @@
         android:layout_alignBottom="@+id/btn15"
         android:layout_marginLeft="16dp"
         android:layout_toRightOf="@+id/btn15"
-        android:onClick="onBtn20Click"
+        android:onClick="onBtnClick"
+        android:tag="20"
         android:text="@string/twenty_percent" />
 
     <Button
@@ -42,7 +44,8 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="152dp"
         android:layout_toLeftOf="@+id/btn15"
-        android:onClick="onBtn10Click"
+        android:onClick="onBtnClick"
+        android:tag="10"
         android:text="@string/ten_percent" />
 
     <TextView
@@ -67,13 +70,16 @@
 
 
     <EditText
-        android:id="@+id/etTipAmount"
+        android:id="@+id/etTotalAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="22dp"
+        android:inputType="numberDecimal"
+        android:onClick="onTotalAmountClick"
+        android:imeOptions="actionDone"
         android:ems="10" />
 
 </RelativeLayout>

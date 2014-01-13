@@ -10,47 +10,54 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TipCalculator extends Activity {
-    public EditText etTipAmount;
+    public EditText etTotalAmount;
     public TextView tvTipAmount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip_calculator);
-        etTipAmount = (EditText) findViewById(R.id.etTipAmount);
+        etTotalAmount = (EditText) findViewById(R.id.etTotalAmount);
         tvTipAmount = (TextView) findViewById(R.id.tvTipAmount);
         
     }
+    
+    public void onTotalAmountClick(View v){
+    	showSoftKeyboard(v);
+    }
 
     private String getDiscountedAmount(int percent, String amount){
-    	double tipAmt=0.0, discountedAmt = 0.0;
+    	if(amount.equalsIgnoreCase("")){
+    		Toast.makeText(getApplicationContext(), R.string.amount_empty, Toast.LENGTH_SHORT).show();
+    		return "";
+    	}
+    	
+    	double tipAmt=0.0, discountedAmt = 0.0; String strDiscountedAmt="";
     	try{
     	 tipAmt = Double.parseDouble(amount);
+    	 if(tipAmt == 0.0 || tipAmt < 0.0){
+     		Toast.makeText(getApplicationContext(), R.string.amount_zero, Toast.LENGTH_SHORT).show();
+     		return "";
+     	 }
+     	 discountedAmt = (tipAmt * percent)/100.00;	
+     	 strDiscountedAmt = String.format("%1.2f", discountedAmt);
     	}
-    	catch(Exception e){  		
-    	}   	
-    	discountedAmt = (tipAmt * percent)/100.00;	
-    	String strDiscountedAmt = String.format("%1.2f", discountedAmt);
+    	catch(Exception e){ 
+    		Toast.makeText(getApplicationContext(), R.string.amount_invalid, Toast.LENGTH_SHORT).show();
+    		return "";
+    	}   
+    	
     	
     	return "$"+ strDiscountedAmt;
     }
-    public void onBtn10Click(View v){
-       	tvTipAmount.setText(getDiscountedAmount(10,etTipAmount.getText().toString()));
-    }
     
-    public void onBtn15Click(View v){
-    	tvTipAmount.setText(getDiscountedAmount(15,etTipAmount.getText().toString()));
-    }
-    
-    public void onBtn20Click(View v){
-    	tvTipAmount.setText(getDiscountedAmount(20,etTipAmount.getText().toString()));
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.tip_calculator, menu);
-        return true;
+    public void onBtnClick(View v){
+    	String percentStr = v.getTag().toString();
+    	int percentNum = Integer.parseInt(percentStr);
+    	tvTipAmount.setText(getDiscountedAmount(percentNum,etTotalAmount.getText().toString()));
+    	hideSoftKeyboard(v);
     }
     
     public void showSoftKeyboard(View view){
